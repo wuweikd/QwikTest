@@ -9,6 +9,7 @@ import Starter from "~/components/starter/next-steps/next-steps";
 export default component$(() => {
   return (
     <>
+      <h1>测试啊，这是个QWIK 项目</h1>
       <Hero />
       <Starter />
 
