@@ -20,7 +20,6 @@ export default component$(() => {
       >
         -
       </button>
-      <Gauge value={count.value} />
       <button
         class="button-dark button-small"
         onClick$={() => setCount(count.value + 1)}
