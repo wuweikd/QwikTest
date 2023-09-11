@@ -1,0 +1,25 @@
+.productList {
+    padding: 20px;
+    width: 1600px;
+    margin: 0 auto;
+}
+
+input {
+    padding: 4px 20px;
+    border-radius: 5px;
+}
+
+.list {
+    display: flex;
+    width: 1600px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.item {
+    margin: 5px;
+    cursor: pointer;
+    width: 450px;
+    padding: 20px;
+    border: 1px #1d2033 solid;
+    border-radius: 10px;
+}
