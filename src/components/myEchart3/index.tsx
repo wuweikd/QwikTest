@@ -2,7 +2,7 @@ import * as echarts from "echarts";
 import { $, component$, useOnDocument } from "@builder.io/qwik";
 const initEcharts = () => {
   // 基于准备好的dom，初始化echarts实例
-  let myChart = echarts.init(document.getElementById("e3"));
+  const myChart = echarts.init(document.getElementById("e3"));
   // 绘制图表
   myChart.setOption({
     title: {

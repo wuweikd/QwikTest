@@ -43,6 +43,7 @@ export const getAppName = (): string => {
     // "chrome": [/Chrome/] 测试
   }
   for (const key in uaList) {
+    // @ts-ignore
     for (const reg of uaList[key]) {
       if (reg.test(ua)) {
         return key

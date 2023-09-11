@@ -1,4 +1,4 @@
-export const getCookie = name => {
+export const getCookie = (name: any) => {
   const RE = new RegExp(`(^| )${name}=([^;]*)(;|$)`)
   const arr = document.cookie.match(RE)
   if (arr) {

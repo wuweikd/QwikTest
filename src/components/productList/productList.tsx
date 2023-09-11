@@ -31,7 +31,7 @@ export default component$(() => {
     return res;
   });
 
-  const openDetail = $((item) => {
+  const openDetail = $(() => {
     console.log("xxxxx", (location.href = "/product"));
   });
 
@@ -50,9 +50,13 @@ export default component$(() => {
         onResolved={(data) => {
           return (
             <div class={styles.list}>
-              {data.list.map((item: any) => (
-                <div class={styles.item} onclick$={() => openDetail(item)}>
-                  <img src={item.pic} alt="" width={450} />
+              {data.list.map((item: any, index: number) => (
+                <div
+                  key={index}
+                  class={styles.item}
+                  onclick$={() => openDetail(item)}
+                >
+                  <img height={450} src={item.pic} alt="" width={450} />
                   <div>商品名称：{item.name}</div>
                   <div>商品产地：{item.address}</div>
                 </div>

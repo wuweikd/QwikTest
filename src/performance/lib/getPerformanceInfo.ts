@@ -16,6 +16,7 @@ let res=0;
 // 动态修改属性
 export function addPerformance(p: string, value: number | string) {
   const PInfo = $store.$getters.getPerformanceInfo()
+  // @ts-ignore
   PInfo[p] = value
   $store.$action.setPerformanceInfo(PInfo)
 }
@@ -68,7 +69,7 @@ function dealVitals() {
 // 处理FP
 function dealFP () {
   try {
-    const entryHandler = (list) => {
+    const entryHandler = (list: any) => {
       for (const entry of list.getEntries()) {
         if (entry.name === "first-paint") {
           // log.info(entry)
@@ -109,7 +110,7 @@ export function getPerformanceInfo(): void{
 }
 
 // 处理触发上报一些关键数据
-export function dealTriggerKeyDataReport(methodName) {
+export function dealTriggerKeyDataReport(methodName: any) {
   switch (methodName) {
   case KeyDataMethodName.canWorkTime:
     addPerformance("canWorkTime",Math.round(performance.now()))

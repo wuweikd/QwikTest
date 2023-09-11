@@ -1,3 +1,4 @@
+// @ts-ignore
 export default function jsonToQueryString(json): string {
   const resp = []
   for (const key in json) {

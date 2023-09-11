@@ -6,6 +6,7 @@ const MULTIPLE = [10000, 100, 1] // 第一位成10000，第二位成100，第三
  * @param s
  * @return {string}
  */
+// @ts-ignore
 export const coerce = (s) => {
   const ori = String(s || "").split(".")
   const fmt = []

@@ -28,6 +28,7 @@ function dpReport (){
   const moreinfo = JSON.stringify({...$store.$getters.getPerformanceInfo(), performanceKey: $store.$getters.getSDKParams().performanceKey})
   const reportData = {...$store.$getters.getBaseInfo(), moreinfo}
   // 回调业务处理基础数据
+  // @ts-ignore
   $store.$getters.getSDKParams().cb({
     message: "上报的数据",
     data: reportData

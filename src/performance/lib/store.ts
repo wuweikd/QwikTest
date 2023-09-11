@@ -38,4 +38,5 @@ const $store: TStore = {
   $getters,
   $action,
 }
-export {$store, TStore}
+export {$store}
+export type {TStore}

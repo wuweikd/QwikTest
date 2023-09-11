@@ -1,4 +1,4 @@
-import { $, component$, useOnDocument, useStore } from "@builder.io/qwik";
+import { $, component$, useStore } from "@builder.io/qwik";
 import md5 from "md5";
 
 export default component$(() => {
