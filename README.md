@@ -1,5 +1,12 @@
 # Qwit 与 NextJs13（RSC） 对比
 
+Qwik与NextJs-v13是替代传统SSR的优秀框架，本文通过实际搭建两个相同功能的页面。直接对比两个框架的实际表现。
+
+测试页面
+Qwik：https://qwik-test-wuwei.vercel.app/
+Nextjs: https://nextjs-demo-ten-blush.vercel.app/
+
+
 ## Qwik 的优势
 
 ```html
@@ -31,11 +38,6 @@ Qwik 是一个基于 Web Components 的快速轻量级前端框架，它在性�
 由于nextJs13 是基于React18,运行性能与React一致。Qwik的重心为启动性能，运行性能未知。具体可以查看以下链接。
 [框架性能对比](https://github.com/krausest/js-framework-benchmark#snapshot-of-the-results)、[Qwik运行性能](https://github.com/krausest/js-framework-benchmark/issues/1111)
 
-## 启动性能
-> 测试页面：  
-> Qwik：https://qwik-test-five6pwbw-beautifulboywuwei-gmailcom.vercel.app/  
-> Nextjs: https://nextjs-demo-ten-blush.vercel.app/  
-
 ## 资源加载
 
 ### css加载
@@ -49,18 +51,18 @@ Qwik 是一个基于 Web Components 的快速轻量级前端框架，它在性�
 3. 对于动态功能，Qwik交互需要额外加载资源以支持事件逻辑（增量渲染逻辑）。
 
 ### 首屏性能指标(保留缓存)
-> 首屏为静态页面
+> 首屏为client component
 1. Qwik:   "fmp":357,"fp":343,"fcp":342.8,"lcp":297.6,"cls":0,"fid":0,"ttfb":30.2
 2. nextjs: "fmp":388,"fp":389,"fcp":389.3,"lcp":342.1,"cls":0,"fid":0,"ttfb":70.9
 
 
-### 次屏性能指标(保留缓存)
-> 次屏包含大量第三方SDK的动态页面
+### 次屏性能指标(保留缓存，直接刷新页面测试)
+> 次屏包含大量第三方SDK的server component
 1. Qwik:   "fmp":370,"fp":316,"fcp":316.3,"lcp":316.3,"cls":0,"fid":0,"ttfb":40.8,
 2. nextjs: "fmp":416,"fp":329,"fcp":328.6,"lcp":328.6,"cls":0,"fid":0,"ttfb":59.3,
 
 ### 次屏性能指标(低速3G，无缓存)
-> 次屏包含大量第三方SDK的动态页面。
+> 次屏包含大量第三方SDK的server component。
 1. Qwik（含service worker）:  "fmp":2366,"fp":2323,"fcp":2323.2,"lcp":2323.2,"cls":0,"fid":0,"ttfb":33.8
 2. Qwik（无service worker）:  "fmp":13795,"fp":2347,"fcp":2347.1,"lcp":2347.1,"cls":0,"fid":0,"ttfb":53.6
 3. nextjs:                   "fmp":17340,"fp":4379,"fcp":4379.3,"lcp":4379.3,"cls":0,"fid":0,"ttfb":104.6
@@ -76,9 +78,9 @@ Qwik 是一个基于 Web Components 的快速轻量级前端框架，它在性�
 
 ## 总结
 1. Qwik 首屏下载资源更少，页面响应更快（需要service worker）。
-2. Next 会提前将全部资源下载，交互时响应更快。
+2. NextJS 会提前将全部资源下载，但是社区更好
 
-|      | 白屏时间 | 交互及时性  | 弱网体验 | 内存占用 |  上手容易度（社区） | 总分  |
+|      | 性能指标 | 交互及时性  | 弱网体验 | 内存占用 |  上手容易度（社区） | 总分  |
 |------|-------|-------|--------------|------|-----------|-----|
 | Qwik | 9分    | 9分     | 5分   | 5分   | 5分        | 33分 |
 | NextJs | 7分    | 9分  | 3分   | 5分   | 7分        | 31分 |
