@@ -1,10 +1,4 @@
-import {
-  component$,
-  useResource$,
-  useStore,
-  Resource,
-  $,
-} from "@builder.io/qwik";
+import { component$, useResource$, useStore, Resource } from "@builder.io/qwik";
 import styles from "./productList.module.css";
 import { productListMockData } from "~/mock/productList";
 import { Link } from "@builder.io/qwik-city";
@@ -30,10 +24,6 @@ export default component$(() => {
     console.log("cityName--->", cityName);
     console.log("res--->", res);
     return res;
-  });
-
-  const openDetail = $(() => {
-    console.log("xxxxx", (location.href = "/product"));
   });
 
   return (
