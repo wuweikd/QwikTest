@@ -4,7 +4,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import { $, component$, useOnDocument } from "@builder.io/qwik";
+import { component$, useVisibleTask$ } from "@builder.io/qwik";
 
 const initSwiper = () => {
   console.log("initSwiper");
@@ -33,12 +33,9 @@ const initSwiper = () => {
 };
 
 function useMySwiper() {
-  useOnDocument(
-    "DOMContentLoaded",
-    $(() => {
-      initSwiper();
-    }),
-  );
+  useVisibleTask$(() => {
+    initSwiper();
+  });
 }
 
 export default component$(() => {

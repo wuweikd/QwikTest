@@ -15,7 +15,7 @@ import MyEcharts12 from "~/components/myEchart12";
 import MyJquery from "~/components/myJquery";
 import MyMd5 from "~/components/myMd5";
 import ProductList from "~/components/productList/productList";
-import { $, component$, useOnDocument, useStore } from "@builder.io/qwik";
+import { $, component$, useStore, useVisibleTask$ } from "@builder.io/qwik";
 import { start, dpReport } from "~/performance/lib";
 
 const Product = component$(() => {
@@ -23,21 +23,17 @@ const Product = component$(() => {
     info: "",
   });
   function usePerformance() {
-    useOnDocument(
-      "DOMContentLoaded",
-      $(() => {
-        console.log("usePerformance 2");
-        start({
-          performanceKey: "product",
-          cb: (p) => {
-            console.log("cb----");
-            console.info(p);
-            store.info = p.data.moreinfo;
-          },
-          hiidoUrl: "https://xxxx.xxxx.xxxx/c.gif",
-        });
-      }),
-    );
+    useVisibleTask$(() => {
+      start({
+        performanceKey: "product",
+        cb: (p) => {
+          console.log("cb----");
+          console.info(p);
+          store.info = p.data.moreinfo;
+        },
+        hiidoUrl: "https://xxxx.xxxx.xxxx/c.gif",
+      });
+    });
   }
   usePerformance();
 
@@ -48,8 +44,8 @@ const Product = component$(() => {
   return (
     <div style={{ textAlign: "center" }}>
       <h1>商品详情页</h1>
-      <button>
-        <h4 onclick$={getReport}>获取页面性能报告</h4>
+      <button onclick$={getReport}>
+        <h4>获取页面性能报告</h4>
       </button>
       <h5>{store.info}</h5>
       <MySwiper></MySwiper>

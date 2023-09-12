@@ -1,5 +1,5 @@
 import * as echarts from "echarts";
-import { $, component$, useOnDocument } from "@builder.io/qwik";
+import { component$, useVisibleTask$ } from "@builder.io/qwik";
 
 const initEcharts = () => {
   // 基于准备好的dom，初始化echarts实例
@@ -24,17 +24,11 @@ const initEcharts = () => {
   });
 };
 
-function useInitEcharts() {
-  useOnDocument(
-    "DOMContentLoaded",
-    $(() => {
-      initEcharts();
-    }),
-  );
-}
-
 export default component$(() => {
-  useInitEcharts();
+  useVisibleTask$(() => {
+    initEcharts();
+  });
+
   return (
     <div>
       <div>echarts</div>

@@ -1,13 +1,10 @@
-import { $, component$, useOnDocument } from "@builder.io/qwik";
+import { component$, useVisibleTask$ } from "@builder.io/qwik";
 import _ from "jquery";
 
 function useJquery() {
-  useOnDocument(
-    "DOMContentLoaded",
-    $(() => {
-      console.log("JQuery_____", _);
-    }),
-  );
+  useVisibleTask$(() => {
+    console.log("JQuery_____", _);
+  });
 }
 
 export default component$(() => {

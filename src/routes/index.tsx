@@ -1,9 +1,9 @@
 import {
   component$,
   useTask$,
-  useOnDocument,
   $,
   useStore,
+  useVisibleTask$,
 } from "@builder.io/qwik";
 import ProductList from "~/components/productList/productList";
 import { dpReport, start } from "../performance/lib/index";
@@ -17,21 +17,17 @@ export default component$(() => {
   });
 
   function usePerformance() {
-    useOnDocument(
-      "DOMContentLoaded",
-      $(() => {
-        console.log("usePerformance 2");
-        start({
-          performanceKey: "xx",
-          cb: (p) => {
-            console.log("cb----");
-            console.info(p);
-            store.info = p.data.moreinfo;
-          },
-          hiidoUrl: "https://xxxx.xxxx.xxxx/c.gif",
-        });
-      }),
-    );
+    useVisibleTask$(() => {
+      start({
+        performanceKey: "xx",
+        cb: (p) => {
+          console.log("cb----");
+          console.info(p);
+          store.info = p.data.moreinfo;
+        },
+        hiidoUrl: "https://xxxx.xxxx.xxxx/c.gif",
+      });
+    });
   }
 
   usePerformance();
